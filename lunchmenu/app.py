@@ -27,7 +27,7 @@ from flask import jsonify
 app = Flask(__name__)  # pylint: disable=invalid-name
 
 LAST_FETCHED = (1900, 1, 1)
-PLUGIN_PATH = './plugs'
+PLUGIN_PATH = './lunchmenu/scrapers'
 CACHE_ENABLED = True
 
 CACHE = {'last_fetched': (1900, 1, 1), 'saved_menus': None}
@@ -76,6 +76,7 @@ def should_update_cache(date: datetime.datetime) -> bool:
         or not CACHE['saved_menus']
         or not CACHE_ENABLED
     )
+
 
 def fetch_menus():
     date = datetime.datetime.now()

@@ -22,9 +22,11 @@ import subprocess
 
 from flask import Flask
 from flask import jsonify
-
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)  # pylint: disable=invalid-name
+cors = CORS(app)  # pylint: disable=invalid-name
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 LAST_FETCHED = (1900, 1, 1)
 PLUGIN_PATH = './lunchmenu/scrapers'
@@ -115,10 +117,12 @@ def render_menus(menus_list: list) -> dict:
 
 # Routes
 @app.route('/')
+@cross_origin()
 def root():
     return render_menus(fetch_menus())
 
 
 @app.route('/api/v1/menus')
+@cross_origin()
 def api_menus():
     return jsonify(fetch_menus())

@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # pylint: disable=missing-docstring
 # pylint: disable=invalid-name
+from collections import defaultdict
 import datetime
 
 import requests
 from bs4 import BeautifulSoup
 
-DAYS = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday')
+DAYS = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+        'sunday')
 
 NAME = 'Edison'
 
@@ -20,8 +22,8 @@ def get_menu_html():
 
 def get_menu(contents):
     soup = BeautifulSoup(contents, 'lxml')
-    menu = {}
-    for day in DAYS:
+    menu = defaultdict(dict)
+    for day in DAYS[:-2]:
         meals = {}
         info = soup.body.find('div', attrs={'id': day})
         table = info.find('table')
@@ -43,7 +45,7 @@ def get_menu_of_the_day(today=None):
     today = today or datetime.datetime.today().weekday()
     try:
         contents = get_menu_html()
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-except
         return {'error': str(e)}
 
     menu = get_menu(contents)
@@ -73,10 +75,9 @@ def api_menu():
         }
 
     courses = [
-        {'name': name, 'descr': descr}
+        {'name': name, 'description': descr}
         for name, descr in menu.items()
     ]
-
 
     return {
         'restaurant': 'Edison',

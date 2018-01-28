@@ -99,7 +99,7 @@ def fetch_menus():
 # Functions to render html; should be replaced later
 def course_render(courses: dict) -> str:
     courses_html = [
-        f"<strong>{course['name']}</strong> {course['descr']}<br>"
+        f"<strong>{course['name']}</strong> {course['description']}<br>"
         for course in courses
     ]
     return ''.join(courses_html)

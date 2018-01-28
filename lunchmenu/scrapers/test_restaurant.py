@@ -8,11 +8,11 @@ def main():
         'courses': [
             {
                 'name': 'Local',
-                'descr': 'Öl och viltfärs med palsternacka',
+                'description': 'Öl och viltfärs med palsternacka',
             },
             {
                 'name': 'World Wide',
-                'descr': '비빔밥 (Bibimbap)',
+                'description': '비빔밥 (Bibimbap)',
             },
         ],
     }

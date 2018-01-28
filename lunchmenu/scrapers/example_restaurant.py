@@ -14,19 +14,19 @@ MENU_SAMPLE = {
     'courses': [
         {
             'name': 'Course 1',
-            'descr': 'Alla bäckar äro brännvin',
+            'description': 'Alla bäckar äro brännvin',
         },
         {
             'name': 'Course 2',
-            'descr': 'Stadsparksdammen full af Bayerskt öl',
+            'description': 'Stadsparksdammen full af Bayerskt öl',
         },
         {
             'name': 'Course 3',
-            'descr': 'Cognac i varenda rännsten',
+            'description': 'Cognac i varenda rännsten',
         },
         {
             'name': 'Course 4',
-            'descr': 'Punch i varendaste pöl',
+            'description': 'Punch i varendaste pöl',
         },
     ],
 }

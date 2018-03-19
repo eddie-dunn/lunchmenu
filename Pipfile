@@ -12,6 +12,7 @@ requests = "*"
 "beautifulsoup4" = "*"
 lxml = "*"
 flask-cors = "*"
+certifi = "*"
 
 
 [dev-packages]
